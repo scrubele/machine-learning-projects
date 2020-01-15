@@ -14,5 +14,5 @@ log_image_folder = "../logs" + slash + "log_images" + slash
 images_folder = "../results" + slash + "images" + slash
 recording_directory = "../recordings" + slash + "all_recordings" + slash
 HISTORY_JSON = "../history.json"
-LOG_MODE = 0  # 1 for time, 2 for frequency
 MODEL_JSON = "model.json"
+LOG_MODE = 0  # 1 for time, 2 for frequency

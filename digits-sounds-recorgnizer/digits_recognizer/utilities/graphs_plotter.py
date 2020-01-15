@@ -7,13 +7,12 @@ from keras import Model
 
 
 def plot_losses(trained_model):
-    # Get the dictionary containing each metric and the loss for each epoch
-    # history_dict = trained_model.history
-    # print(trained_model.keys())
+    """
+    Plot Loss function of the model.
+    Args:
+        trained_model:
+    """
     print(trained_model)
-    # print(type(trained_model))
-    # history_dict = {index: v for index, v in np.ndenumerate(trained_model)}
-    # print(trained_model.history)
     try:
         json.dump(trained_model, open(HISTORY_JSON, 'w'))
     except:

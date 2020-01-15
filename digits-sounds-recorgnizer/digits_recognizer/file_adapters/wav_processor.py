@@ -4,38 +4,28 @@ from digits_sounds_recognizer import *
 from utilities.graphs_plotter import *
 
 
-def find_duration(file_name):
-    """
-    Function to find a duration of the wave file in seconds.
-    Args:
-        file_name - a name of the test file.
-    Returns:
-        duration - float value (duration of the test file)
-    """
-    with contextlib.closing(wave.open(file_name, 'r')) as f:
-        frames_count = f.getnframes()
-        rate = f.getframerate()
-        sample_width = f.getsampwidth()
-        channels_count = f.getnchannels()
-        duration = frames_count / float(rate)
-        return duration
-
-
 def graph_spectrogram(wav_file_path, nfft=512, noverlap=511):
+    """
+    Create a spectogram (plot) of existed file.
+    Args:
+        wav_file_path: audio file path
+    """
     # find_duration(wav_file_path)
-    rate, data = wavfile.read(wav_file_path)
+    rate, data = wavfile.read(wav_file_path)  # read a file
     figure, axes = plt.subplots(1)
     figure.subplots_adjust(left=0, right=1, bottom=0, top=1)
     axes.axis('off')
-    spectrum, frequencies, times, image = axes.specgram(x=data, Fs=rate, noverlap=noverlap, NFFT=nfft)
+    spectrum, frequencies, times, image = axes.specgram(x=data, Fs=rate, noverlap=noverlap,
+                                                        NFFT=nfft)  # create a spectogram
     axes.axis('off')
     plt.rcParams['figure.figsize'] = [0.75, 0.5]
     # figure.savefig(images_folder + wav_file_path.split(slash)[-1:][0] + '.png', dpi=300, frameon='false')
+    # if you need to save figures uncomment line above
     figure.canvas.draw()
-    width, height = figure.get_size_inches() * figure.get_dpi()
-    figure_canvas_string = figure.canvas.tostring_rgb()
-    canvas_array = np.frombuffer(figure_canvas_string, dtype=np.uint8)
-    image_array = np.reshape(canvas_array, (int(height), int(width), 3))
+    width, height = figure.get_size_inches() * figure.get_dpi() # find width and height of the spectogram
+    figure_canvas_string = figure.canvas.tostring_rgb() # convert to rgb
+    canvas_array = np.frombuffer(figure_canvas_string, dtype=np.uint8) # convert a canvas
+    image_array = np.reshape(canvas_array, (int(height), int(width), 3)) # reshape an array
     # plt.show()
     plt.close(figure)
     return image_array

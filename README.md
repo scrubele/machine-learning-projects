@@ -1,9 +1,11 @@
-# Digits' sounds recognizer
+# Digits sounds recognizer
 To run code:
 ```
 pip3 install -r requirements.txt
 python3 digits_sounds_recognizer.py
 ```
+<i>In order to run in Logging mode, change value of LOG_MODE in config.py</i>
+
 Files structure:
 ```
 ├── digits_recognizer
@@ -28,3 +30,7 @@ Files structure:
 │   └── test_records  # all test records 
 └── tree
 ```
+Used dataset:
+[Free Spoken Digit Dataset](https://github.com/Jakobovski/free-spoken-digit-dataset)
+ 
+ 

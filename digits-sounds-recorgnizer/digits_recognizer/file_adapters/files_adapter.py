@@ -4,11 +4,6 @@ from digits_sounds_recognizer import *
 def save_model_to_disk(model):
     """
     save created model
-    Args:
-        model:
-
-    Returns:
-
     """
     model_json = model.to_json()  # serialize model to JSON
     with open("%s" % MODEL_JSON, "w") as model_json_file:
@@ -19,7 +14,7 @@ def save_model_to_disk(model):
 
 def load_model_from_disk():
     """
-    # load json and create model
+    load model.json and create model
     Returns:
 
     """
@@ -33,6 +28,9 @@ def load_model_from_disk():
 
 
 def get_recordings_files_names(audio_dir):
+    """
+    Get names of all recording from the folder
+    """
     file_names = [f for f in os.listdir(audio_dir) if '.wav' in f]
     file_names.sort()
     return file_names, len(file_names)

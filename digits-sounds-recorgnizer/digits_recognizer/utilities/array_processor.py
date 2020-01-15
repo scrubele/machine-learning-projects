@@ -4,6 +4,9 @@ from config import *
 
 
 def print_datasets_properties(x_train, y_train, x_test, y_test):
+    """
+    Print data sets properties
+    """
     print("Size of Training Data:", np.shape(x_train))
     print("Size of Training Labels:", np.shape(y_train))
     print("Size of Test Data:", np.shape(x_test))
@@ -11,6 +14,9 @@ def print_datasets_properties(x_train, y_train, x_test, y_test):
 
 
 def create_empty_arrays(test_dataset, train_dataset):
+    """
+    Create empty vectors.
+    """
     y_test = np.zeros(len(test_dataset))
     y_train = np.zeros(len(train_dataset))
     x_train = np.zeros((len(train_dataset), image_height, image_width))

@@ -5,6 +5,15 @@ from file_adapters.files_adapter import *
 
 
 def get_random_samples(file_names, samples_count_per_category):
+    """
+    get random samples for log testing.
+    Args:
+        file_names:
+        samples_count_per_category:
+
+    Returns:
+
+    """
     checklist = np.zeros(samples_count_per_category * 10)
     final_list = []
     iteration_number = 0
