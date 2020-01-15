@@ -103,11 +103,12 @@ def create_model(path):
     model.compile(loss=keras.losses.categorical_crossentropy,
                   optimizer=keras.optimizers.adam(), metrics=['accuracy'])
     print(model.summary())
-    model.fit(x_train, y_train, batch_size=4, epochs=10,
+    history = model.fit(x_train, y_train, batch_size=4, epochs=10,
               verbose=1, validation_data=(x_test, y_test))
-    evaluate_results(x_test, y_test, model, test_dataset)
+    print(history.history.keys())
+    print(history.history)
+    evaluate_results(history.history, x_test, y_test, model, test_dataset)
     return model
-
 
 def load_model():
     print(os.path.isfile(MODEL_JSON))
@@ -126,6 +127,6 @@ if __name__ == '__main__':
         trained_model = load_model()
         trained_model_x_train, _, trained_model_x_test, trained_model_y_test, trained_model_test_dataset = \
             create_datasets(recording_directory, 100)
-        evaluate_results(trained_model_x_test, trained_model_y_test, trained_model, trained_model_test_dataset)
+        evaluate_results(_, trained_model_x_test, trained_model_y_test, trained_model, trained_model_test_dataset)
         # visualize_CNN(trained_model, trained_model_x_train)
         # iterate_test_files(trained_model)

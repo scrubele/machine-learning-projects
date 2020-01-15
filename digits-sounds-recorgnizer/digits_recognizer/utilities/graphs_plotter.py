@@ -1,22 +1,34 @@
 from keras import Model
+import numpy as np
 import matplotlib.pyplot as plt
 from config import *
 from file_adapters.files_adapter import *
 import json
 
+
 def plot_losses(trained_model):
     # Get the dictionary containing each metric and the loss for each epoch
-    history_dict = trained_model.history
+    # history_dict = trained_model.history
+    # print(trained_model.keys())
+    print(trained_model)
+    # print(type(trained_model))
+    # history_dict = {index: v for index, v in np.ndenumerate(trained_model)}
     # print(trained_model.history)
-    json.dump(history_dict, open(HISTORY_JSON, 'w'))
-    plt.plot(trained_model.history['accuracy'], label='accuracy')
-    plt.plot(trained_model.history['val_accuracy'], label='val_accuracy')
+    try:
+        json.dump(trained_model, open(HISTORY_JSON, 'w'))
+    except:
+        x=0
+    print(list(trained_model.keys()))
+    plt.figure(figsize=(1, 1))
+    plt.plot(trained_model['accuracy'], label='accuracy')
+    plt.plot(trained_model['val_accuracy'], label='val_accuracy')
     plt.xlabel('Epoch')
     plt.ylabel('Accuracy')
     plt.ylim([0.5, 1])
     plt.legend(loc='lower right')
-    plt.show()
+    plt.rcParams["figure.figsize"] = (100, 200)
     plt.savefig('accuracy.png', dpi=300, frameon='false')
+    plt.show()
 
 
 def plot_amplitude_graph(current_logs_image_folder, file_name, file_data):

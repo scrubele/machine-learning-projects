@@ -26,7 +26,7 @@ def iterate_test_files(model):
         print("_____________________________\n")
 
 
-def evaluate_results(x_test, y_test, trained_model, x_labels):
+def evaluate_results(history, x_test, y_test, trained_model, x_labels):
     print("Result evaluating")
     opt = keras.optimizers.adam(lr=0.0001)
     trained_model.compile(loss='categorical_crossentropy',
@@ -36,15 +36,8 @@ def evaluate_results(x_test, y_test, trained_model, x_labels):
     print(scores)
     print("Test Accuracy", scores[1] * 100)
     print("Loss value", scores[0])
-    # try:
-    plot_losses(trained_model)
-    # except:
-    #     print("error")
+    # plot_losses(history)
     y_pred = trained_model.predict_classes(x_test)
-    # print(y_pred)
-    # x_labels = [str(i) for i in range(0, 200)]
-    # print(x_labels)
     confusion_matrix = tf.math.confusion_matrix(labels=y_pred, predictions=y_pred, name='confusion_matrix')
     with tf.Session():
         print('Confusion Matrix: \n\n', tf.Tensor.eval(confusion_matrix, feed_dict=None, session=None))
-    # print(confusion_matrix)
