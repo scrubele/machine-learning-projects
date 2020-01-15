@@ -129,5 +129,4 @@ if __name__ == '__main__':
         trained_model_x_train, _, trained_model_x_test, trained_model_y_test, trained_model_test_dataset = \
             create_datasets(recording_directory, 100)
         evaluate_results(_, trained_model_x_test, trained_model_y_test, trained_model, trained_model_test_dataset)
-        # visualize_CNN(trained_model, trained_model_x_train)
-        # iterate_test_files(trained_model)
+        iterate_test_files(trained_model)

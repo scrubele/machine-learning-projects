@@ -58,19 +58,3 @@ def plot_frequency_graph(current_logs_image_folder, file_name, file_data, file_r
         current_logs_image_folder, file_name[0] + '_spec.png'), dpi=300, frameon='false')
     plt.close(figure)
 
-
-def visualize_CNN(model, X_train):
-    layer_outputs = [layer.output for layer in model.layers]
-    activation_model = Model(inputs=model.input, outputs=layer_outputs)
-    activations = activation_model.predict(X_train[10].reshape(1, 28, 28, 1))
-
-    def display_activation(activations, col_size, row_size, act_index):
-        activation = activations[act_index]
-        activation_index = 0
-        fig, ax = plt.subplots(row_size, col_size, figsize=(row_size * 2.5, col_size * 1.5))
-        for row in range(0, row_size):
-            for col in range(0, col_size):
-                ax[row][col].imshow(activation[0, :, :, activation_index], cmap='gray')
-                activation_index += 1
-
-    display_activation(activations, 8, 8, 1)
