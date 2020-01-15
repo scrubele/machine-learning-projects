@@ -22,7 +22,7 @@ from file_adapters.wav_processor import *
 from model_services.log_generator import *
 from model_services.results_evaluator import *
 from utilities.array_processor import *
-from config import  *
+from config import *
 
 
 def form_test_dataset(file_names, file_count):
@@ -104,11 +104,12 @@ def create_model(path):
                   optimizer=keras.optimizers.adam(), metrics=['accuracy'])
     print(model.summary())
     history = model.fit(x_train, y_train, batch_size=4, epochs=10,
-              verbose=1, validation_data=(x_test, y_test))
+                        verbose=1, validation_data=(x_test, y_test))
     print(history.history.keys())
     print(history.history)
     evaluate_results(history.history, x_test, y_test, model, test_dataset)
     return model
+
 
 def load_model():
     print(os.path.isfile(MODEL_JSON))

@@ -1,9 +1,9 @@
-from keras import Model
-import numpy as np
+import json
+
 import matplotlib.pyplot as plt
 from config import *
 from file_adapters.files_adapter import *
-import json
+from keras import Model
 
 
 def plot_losses(trained_model):
@@ -17,7 +17,7 @@ def plot_losses(trained_model):
     try:
         json.dump(trained_model, open(HISTORY_JSON, 'w'))
     except:
-        x=0
+        x = 0
     print(list(trained_model.keys()))
     plt.figure(figsize=(1, 1))
     plt.plot(trained_model['accuracy'], label='accuracy')

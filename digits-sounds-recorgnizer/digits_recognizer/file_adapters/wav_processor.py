@@ -1,7 +1,7 @@
-from digits_sounds_recognizer import *
-from utilities.graphs_plotter import *
 import matplotlib.pyplot as plt
 import numpy as np
+from digits_sounds_recognizer import *
+from utilities.graphs_plotter import *
 
 
 def find_duration(file_name):
