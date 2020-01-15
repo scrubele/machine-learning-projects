@@ -1,11 +1,14 @@
 from keras import Model
 import matplotlib.pyplot as plt
 from config import *
-from utils.file_utils import *
-
+from file_adapters.files_adapter import *
+import json
 
 def plot_losses(trained_model):
-    print(trained_model.history)
+    # Get the dictionary containing each metric and the loss for each epoch
+    history_dict = trained_model.history
+    # print(trained_model.history)
+    json.dump(history_dict, open(HISTORY_JSON, 'w'))
     plt.plot(trained_model.history['accuracy'], label='accuracy')
     plt.plot(trained_model.history['val_accuracy'], label='val_accuracy')
     plt.xlabel('Epoch')

@@ -1,8 +1,8 @@
 import tensorflow as tf
 from config import *
-from utils.file_utils import *
-from utils.log_generator import *
-from utils.utils import *
+from file_adapters.files_adapter import *
+from model_services.log_generator import *
+from utilities.array_processor import *
 
 
 def get_predictions(model, audio_data):
@@ -36,10 +36,10 @@ def evaluate_results(x_test, y_test, trained_model, x_labels):
     print(scores)
     print("Test Accuracy", scores[1] * 100)
     print("Loss value", scores[0])
-    try:
-        plot_losses(trained_model)
-    except:
-        print("error")
+    # try:
+    plot_losses(trained_model)
+    # except:
+    #     print("error")
     y_pred = trained_model.predict_classes(x_test)
     # print(y_pred)
     # x_labels = [str(i) for i in range(0, 200)]

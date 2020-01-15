@@ -17,11 +17,12 @@ from keras.models import Sequential
 from keras.models import model_from_json
 from scipy.io import wavfile
 from skimage.measure import block_reduce
-from utils.file_utils import *
-from utils.log_generator import *
-from utils.utils import *
+from file_adapters.files_adapter import *
+from file_adapters.wav_processor import *
+from model_services.log_generator import *
+from model_services.results_evaluator import *
+from utilities.array_processor import *
 from config import  *
-from utils.results_evaluator import *
 
 
 def form_test_dataset(file_names, file_count):

@@ -1,5 +1,5 @@
 from digits_sounds_recognizer import *
-from utils.graphs_plotter import *
+from utilities.graphs_plotter import *
 import matplotlib.pyplot as plt
 import numpy as np
 

@@ -1,7 +1,7 @@
 from random import random
 
 from digits_sounds_recognizer import *
-from utils.wav_processer import *
+from file_adapters.files_adapter import *
 
 
 def get_random_samples(file_names, samples_count_per_category):
