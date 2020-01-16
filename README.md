@@ -4,6 +4,11 @@ To run code:
 pip3 install -r requirements.txt
 python3 digits_sounds_recognizer.py
 ```
+To train machine:
+delete model.json and rub:
+```
+python3 digits_sounds_recognizer.py
+```
 <i>In order to run in the Logging mode, change value of LOG_MODE in the config.py</i>
 
 Files structure:
